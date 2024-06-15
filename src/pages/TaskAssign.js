@@ -40,7 +40,7 @@ function Task() {
     description: "",
     date: "",
     priority: "",
-    userId: "", // Add userId to the form state
+    userId: "", 
   });
   const [editMode, setEditMode] = useState(false);
   const [editBenefit, setEditBenefit] = useState(null);
@@ -97,9 +97,8 @@ function Task() {
     } else {
       console.log(res.msg);
     }
-    fetchJobBenefitList();
     setIsDeleteModalOpen(false);
-
+    fetchJobBenefitList();
   };
 
   const openDeleteModal = (e, _id) => {
@@ -109,6 +108,8 @@ function Task() {
 
   const closeDeleteModal = () => {
     setIsDeleteModalOpen(false);
+    fetchJobBenefitList();
+
   };
   
 
@@ -136,7 +137,7 @@ function Task() {
       description: benefit.description,
       date: benefit.date,
       priority: benefit.priority,
-      userId: benefit.userId, // Add this line if userId is part of the benefit object
+      userId: benefit.userId,
     });
     setEditBenefit(benefit._id);
     setValidationError("");
@@ -156,7 +157,7 @@ function Task() {
       !description.trim() ||
       !date.trim() ||
       !priority.trim() ||
-      !userId.trim() // Add userId validation
+      !userId.trim() 
     ) {
       setValidationError("All fields are required");
       return;
