@@ -26,9 +26,15 @@ function Login() {
     if (res.success) {
       toast.success(res.msg);
       Cookies.set("Task-Management-Cookies", JSON.stringify(res.data));
-      setTimeout(() => {
-        window.location.href = `${config.baseUrl}dashboard`;
-      }, 1000);
+      if(res.data.userType == 'User'){
+        setTimeout(() => {
+          window.location.href = `${config.baseUrl}task`;
+        }, 1000);
+      }else{
+        setTimeout(() => {
+          window.location.href = `${config.baseUrl}taskassign`;
+        }, 1000);
+      }
     } else {
       toast.error(res.msg);
     }
@@ -41,9 +47,15 @@ function Login() {
       console.log(res.data)
       toast.success(res.msg);
       Cookies.set("Task-Management-Cookies", JSON.stringify(res.data));
+      if(res.data.userType == 'User'){
       setTimeout(() => {
-        window.location.href = `${config.baseUrl}dashboard`;
+        window.location.href = `${config.baseUrl}task`;
       }, 1000);
+    }else{
+      setTimeout(() => {
+        window.location.href = `${config.baseUrl}taskassign`;
+      }, 1000);
+    }
     } else {
       toast.error(res.msg);
     }

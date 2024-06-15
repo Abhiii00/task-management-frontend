@@ -8,14 +8,8 @@ const logoutUser = () => {
 };
 
 const loginData = Cookies.get('Task-Management-Cookies') ? JSON.parse(Cookies.get('Task-Management-Cookies')) : {};
-console.log('loginData', loginData)
 const routes = [
-  {
-    path: `${config.baseUrl}dashboard`,
-    icon: 'HomeIcon',
-    name: 'Dashboard',
-  },
-
+  
   ...(loginData.userType === 'Admin' ? [{
     path: `${config.baseUrl}taskassign`,
     icon: 'HomeIcon',
